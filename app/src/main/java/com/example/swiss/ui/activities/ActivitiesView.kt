@@ -25,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.swiss.ui.activities.items.ActivityItem
 import com.example.swiss.ui.activities.sheets.AddActivityBottomSheet
 import com.example.swiss.ui.vm.ViewModel
 import kotlinx.coroutines.launch
@@ -46,14 +47,12 @@ fun ActivitiesView(
         modifier = Modifier.fillMaxSize(),
     ) {
         if (activities?.isEmpty()?.not() == true) {
-            Column {
-
-                LazyColumn(
-                    verticalArrangement = Arrangement.spacedBy(5.dp)
-                ) {
-                    items(activities) {
-                        Text("${it.name}")
-                    }
+            LazyColumn(
+                verticalArrangement = Arrangement.spacedBy(3.dp),
+                modifier = Modifier.fillMaxSize()
+            ) {
+                items(activities) {
+                    ActivityItem(it)
                 }
             }
         } else
@@ -85,5 +84,4 @@ fun ActivitiesView(
             selectedUserId,
             viewModel
         )
-
 }

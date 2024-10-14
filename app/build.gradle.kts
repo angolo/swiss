@@ -59,7 +59,7 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
+    implementation("androidx.compose.material3:material3:1.3.0")
     implementation("androidx.compose.material:material:1.7.3")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -69,7 +69,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation ("androidx.navigation:navigation-compose:2.8.2")
+    implementation("androidx.navigation:navigation-compose:2.8.2")
 
     //ktor
     implementation(libs.ktor.client.core)
@@ -79,7 +79,7 @@ dependencies {
 
     implementation(libs.ktor.client.content.negotiation)
     implementation("org.slf4j:slf4j-nop:1.7.25")
-    implementation ("io.ktor:ktor-client-logging-jvm:2.3.10")
+    implementation("io.ktor:ktor-client-logging-jvm:2.3.10")
 
     //koin
     implementation(platform(libs.koin.bom))
