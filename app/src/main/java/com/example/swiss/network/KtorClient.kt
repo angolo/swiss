@@ -1,6 +1,5 @@
 package com.example.swiss.network
 
-import android.util.Log
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.android.Android
 import io.ktor.client.plugins.DefaultRequest
@@ -10,13 +9,11 @@ import io.ktor.client.plugins.logging.ANDROID
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
-import io.ktor.client.plugins.observer.ResponseObserver
 import io.ktor.client.request.header
 import io.ktor.client.request.headers
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.serialization.kotlinx.json.json
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import org.koin.dsl.module
 
@@ -24,7 +21,6 @@ val ktorModule = module {
     single<HttpClient> { ktorClient }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
 private val ktorClient = HttpClient(Android) {
 
     defaultRequest { url("http://10.0.2.2:8080/") }

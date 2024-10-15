@@ -24,6 +24,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.example.swiss.ui.activities.items.ActivityItem
 import com.example.swiss.ui.activities.sheets.AddActivityBottomSheet
@@ -65,7 +66,8 @@ fun ActivitiesView(
         SmallFloatingActionButton(
             modifier = Modifier
                 .align(Alignment.BottomEnd)
-                .padding(10.dp),
+                .padding(10.dp)
+                .testTag("Fab"),
             onClick = {
                 coroutineScope.launch {
                     showBottomSheet.value = true

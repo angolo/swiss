@@ -46,8 +46,11 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            merges += "META-INF/LICENSE.md"
+            merges += "META-INF/LICENSE-notice.md"
         }
     }
+
 }
 
 dependencies {
@@ -61,14 +64,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation("androidx.compose.material3:material3:1.3.0")
     implementation("androidx.compose.material:material:1.7.3")
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
-
     implementation("androidx.navigation:navigation-compose:2.8.2")
 
     //ktor
@@ -89,4 +84,30 @@ dependencies {
     implementation(libs.koin.compose)
     implementation(libs.koin.ktor)
 
+    //tests
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.androidx.navigation.testing)
+
+    testImplementation("io.mockk:mockk:1.13.13")
+    testImplementation("io.mockk:mockk-android:1.13.13")
+    testImplementation("io.mockk:mockk-agent:1.13.13")
+    androidTestImplementation("io.mockk:mockk-android:1.13.13")
+    androidTestImplementation("io.mockk:mockk-agent:1.13.13")
+
+    androidTestImplementation("io.insert-koin:koin-test:3.5.6")
+    testImplementation("io.insert-koin:koin-test:3.5.6")
+
 }
+
+
+
+
+
+
+

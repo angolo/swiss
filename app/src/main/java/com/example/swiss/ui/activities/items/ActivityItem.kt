@@ -16,7 +16,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import com.example.swiss.network.data.common.Activity
 import com.example.swiss.utils.enums.ActivityTypeEnum

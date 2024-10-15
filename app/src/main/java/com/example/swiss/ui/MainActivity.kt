@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
@@ -15,9 +16,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.DateRange
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -61,26 +65,39 @@ class MainActivity : ComponentActivity() {
                 ) { innerPadding ->
                     val navController = rememberNavController()
                     val viewModel = koinViewModel<ViewModel>()
-                    NavHost(
-                        modifier = Modifier.padding(innerPadding),
-                        navController = navController,
-                        startDestination = "Home"
+
+                    Column(
+                        modifier = Modifier.padding(innerPadding)
                     ) {
-                        composable("Home") {
-                            HomeView(
-                                navController,
-                                viewModel
-                            )
-                        }
-                        composable("Activities/{userId}") { backstackEntry ->
-                            ActivitiesView(
-                                backstackEntry.arguments?.getString("userId"),
-                                viewModel
-                            )
-                        }
+                        homeNavHost(navController, viewModel)
                     }
+
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun homeNavHost(
+    navController: NavHostController,
+    viewModel: ViewModel
+) {
+    NavHost(
+        navController = navController,
+        startDestination = "Home"
+    ) {
+        composable("Home") {
+            HomeView(
+                navController,
+                viewModel
+            )
+        }
+        composable("Activities/{userId}") { backstackEntry ->
+            ActivitiesView(
+                backstackEntry.arguments?.getString("userId"),
+                viewModel
+            )
         }
     }
 }

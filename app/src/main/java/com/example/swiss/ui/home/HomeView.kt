@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.swiss.ui.items.UserItem
@@ -28,27 +29,31 @@ fun HomeView(
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(5.dp)
-        ) {
-            items(vm.users) {
-                UserItem(it) {
-                    nav.navigate("Activities/${it._id}")
-                }
-            }
-        }
-
         if (vm.isLoading)
             CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center)
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .testTag("is loading")
             )
         else if (vm.users.isEmpty())
-            if (vm.users.isEmpty())
-                Text(
-                    "Nessun utente trovato!",
-                    Modifier.align(Alignment.Center)
-                )
+            Text(
+                "Nessun utente trovato!",
+                Modifier
+                    .align(Alignment.Center)
+                    .testTag("No data")
+            )
+        else
+            LazyColumn(
+                modifier = Modifier.fillMaxSize()
+                    .testTag("users list"),
+                verticalArrangement = Arrangement.spacedBy(5.dp)
+            ) {
+                items(vm.users) {
+                    UserItem(it) {
+                        nav.navigate("Activities/${it._id}")
+                    }
+                }
+            }
     }
 
 

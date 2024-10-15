@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -22,7 +23,8 @@ import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.MenuAnchorType
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetState
-import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.material3.SheetValue
+import androidx.compose.material3.rememberStandardBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
@@ -34,6 +36,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -44,17 +47,14 @@ import com.example.swiss.ui.theme.SwissTheme
 import com.example.swiss.ui.vm.ViewModel
 import com.example.swiss.utils.enums.ActivityTypeEnum
 import kotlinx.coroutines.launch
-import java.time.Instant
-import java.time.LocalDateTime
-import java.util.Calendar
-import java.util.Date
 
 
 @OptIn(ExperimentalMaterial3Api::class)
-
 @Composable
 fun AddActivityBottomSheet(
-    bottomSheetState: SheetState = rememberModalBottomSheetState(),
+    bottomSheetState: SheetState = rememberStandardBottomSheetState(
+        initialValue = SheetValue.Expanded
+    ),
     showBottomSheet: MutableState<Boolean> = mutableStateOf(false),
     selectedUserId: String? = null,
     viewModel: ViewModel? = null
@@ -73,7 +73,8 @@ fun AddActivityBottomSheet(
             result.value = null
             text.value = null
         },
-        sheetState = bottomSheetState
+        sheetState = bottomSheetState,
+        modifier = Modifier.testTag("Sheet")
     ) {
         Box {
             Column {
@@ -87,6 +88,7 @@ fun AddActivityBottomSheet(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(10.dp)
+                        .testTag("textField")
                 )
 
                 SelectActivityDropDownMenu(
@@ -103,7 +105,6 @@ fun AddActivityBottomSheet(
                                     )
                                     Text(activity.activityName)
                                 }
-
                             },
                             onClick = { close(activity) }
                         )
@@ -205,11 +206,11 @@ fun SelectActivityDropDownMenu(
 @Preview
 private fun AddActivitySheetPreview() {
     SwissTheme {
-        val sheetState = rememberModalBottomSheetState()
-        LaunchedEffect(Unit) { sheetState.show() }
+        Box (
+            Modifier.fillMaxSize()
+        ) {
+            AddActivityBottomSheet()
+        }
 
-        AddActivityBottomSheet(
-            sheetState
-        )
     }
 }
