@@ -1,0 +1,21 @@
+
+
+name : combo
+services:
+  mongoDb:
+    image: mongo:latest
+    ports:
+      - "27016:27017"
+
+
+
+  ktor_services:
+      image: ortegapaz/my_ktor_server:latest
+      restart: always
+      ports :
+        - "8080:8080"
+      depends_on:
+        - mongoDb
+
+
+
