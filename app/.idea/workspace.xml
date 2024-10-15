@@ -42,19 +42,6 @@
                 <item name="Swiss" type="f1a62948:ProjectNode" />
                 <item name="app" type="2d1252cf:ModuleNode" />
               </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Swiss" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Swiss" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="other" type="c8890929:TasksNode$1" />
-              </path>
             </expand>
             <select />
           </tree_state>
@@ -72,11 +59,11 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2nPwdj2R9r3KAN1yMXV7fC2Ahzv" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
@@ -106,7 +93,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/tabascolosco/Desktop/Progetti/Swiss",
+    "last_opened_file_path": "/Users/tabascolosco/Desktop/Progetti/swiss/app",
     "settings.editor.selected.configurable": "experimental"
   },
   "keyToStringList": {
@@ -123,7 +110,7 @@
       <recent name="com.example.swiss.ui" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Swiss:app [testDebugUnitTest]">
+  <component name="RunManager" selected="Android App.app">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Swiss.app.main" />
       <option name="DEPLOY" value="true" />

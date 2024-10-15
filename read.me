@@ -1,0 +1,10 @@
+
+To build the server just run the compose.yaml file, it will create a container with 2 images:
+    - mongo instance,
+    - ktor server instance;
+
+At the first startup the server will also create a Db named "Swiss" with an initial collection, user,
+the mongo db can be reached by localhost:27016, the server from the 8080 port.
+
+- postman.json-> collection postman to test base endpoints
+- app-> android Application that connects to the server running on docker
